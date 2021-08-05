@@ -1,6 +1,10 @@
 part of "screen.dart";
 
 class PatientDetailScreen extends StatefulWidget {
+  final Patient patient;
+
+  PatientDetailScreen({this.patient});
+
   @override
   _PatientDetailScreenState createState() => _PatientDetailScreenState();
 }
@@ -34,7 +38,7 @@ class _PatientDetailScreenState extends State<PatientDetailScreen> {
                   ),
                   SizedBox(height: 10),
                   Text(
-                    "Albertus Cigaretes",
+                    widget.patient.name,
                     style: poppinsFont.copyWith(
                         fontWeight: FontWeight.bold, fontSize: 20),
                   )
@@ -65,9 +69,16 @@ class _PatientDetailScreenState extends State<PatientDetailScreen> {
                           EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                       child: Column(
                         children: [
-                          datapatient("nama", "Albertus Cigaretes"),
-                          datapatient("Ruangan", "302"),
-                          datapatient("Penyakit", "Gila Gilai Kodong")
+                          datapatient("nama", widget.patient.name),
+                          datapatient(
+                              "Jenis Kelamin",
+                              (widget.patient.gender == Gender.Laki)
+                                  ? "Laki-laki"
+                                  : "Perempuan"),
+                          datapatient("Ruangan", widget.patient.room),
+                          datapatient("Alamat", widget.patient.address),
+                          datapatient("No Telp", widget.patient.phone),
+                          datapatient("Status", widget.patient.status),
                         ],
                       ),
                     ),
@@ -91,9 +102,16 @@ class _PatientDetailScreenState extends State<PatientDetailScreen> {
             title,
             style: poppinsFont.copyWith(fontWeight: FontWeight.bold),
           ),
-          Text(
-            value,
-            style: poppinsFont,
+          SizedBox(
+            width: 80,
+          ),
+          Flexible(
+            child: Text(
+              value,
+              style: poppinsFont,
+              maxLines: 3,
+              textAlign: TextAlign.right,
+            ),
           )
         ],
       ),
