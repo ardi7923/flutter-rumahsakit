@@ -30,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                "assets/icons/hospital.png",
+                "assets/logo_kepulauan_yapen.png",
                 width: 100,
               ),
               SizedBox(

@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         height: 3,
                       ),
                       Text(
-                        "Di Rs Deh... Masa Marahki",
+                        "Di RS Umum Daerah Serui",
                         style: poppinsFont.copyWith(
                             fontWeight: FontWeight.w600,
                             fontSize: 17,
@@ -58,12 +58,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: MediaQuery.of(context).size.height / 3.3,
               ),
               Container(
+                  
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: backgroundColor,
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Container(
+                    
                     margin: EdgeInsets.fromLTRB(16, 30, 16, 10),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -84,12 +86,15 @@ class _HomeScreenState extends State<HomeScreen> {
                               image: "assets/icons/patient.png",
                               title: "Cari Pasien",
                               onTap: () {
-                                Get.to(PatientScreen(),transition: Transition.zoom);
+                                Get.to(() => PatientScreen(),transition: Transition.zoom);
                               },
                             ),
                             CardMenu(
                               image: "assets/icons/health-check.png",
                               title: "Konsultasi",
+                              onTap: (){
+                                Get.to(() => SigninScreen());
+                              },
                             ),
                           ],
                         ),
@@ -100,8 +105,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             CardMenu(
-                              image: "assets/icons/health-check.png",
-                              title: "Konsultasi",
+                              image: "assets/icons/doctor.png",
+                              title: "Login Dokter",
+                              onTap: (){
+                                Get.to(SigninScreen());
+                              },
                             ),
                             CardMenu(
                               image: "assets/icons/hospital.png",

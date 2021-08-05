@@ -67,7 +67,7 @@ class _PatientDetailScreenState extends State<PatientDetailScreen> {
                         children: [
                           datapatient("nama", "Albertus Cigaretes"),
                           datapatient("Ruangan", "302"),
-                          datapatient("Penyakit", "Gila Gilai Kodong ")
+                          datapatient("Penyakit", "Gila Gilai Kodong")
                         ],
                       ),
                     ),

@@ -30,22 +30,13 @@ class _PatientScreenState extends State<PatientScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Cari Sai Keluarganu,",
+                          "Pencarian Pasien",
                           style: poppinsFont.copyWith(
                               fontWeight: FontWeight.w600,
                               fontSize: 20,
                               color: Colors.black),
                         ),
-                        SizedBox(
-                          height: 3,
-                        ),
-                        Text(
-                          "Parompa Rompai",
-                          style: poppinsFont.copyWith(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 17,
-                              color: Colors.black),
-                        ),
+
                       ],
                     ),
                     Image.asset(

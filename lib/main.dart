@@ -17,7 +17,8 @@ class MyApp extends StatelessWidget {
       initialRoute: "/splashscreen",
       getPages: [
         GetPage(name: "/splashscreen", page: () => SplashScreen()),
-        GetPage(name: "/home", page: () => HomeScreen(),transition: Transition.rightToLeft)
+        GetPage(name: "/home", page: () => HomeScreen()),
+        GetPage(name: "/signin", page: () => SigninScreen()),
       ],
     );
   }
