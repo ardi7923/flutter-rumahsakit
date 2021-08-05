@@ -30,7 +30,7 @@ class _PatientScreenState extends State<PatientScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Cari SAi Keluarganu,",
+                          "Cari Sai Keluarganu,",
                           style: poppinsFont.copyWith(
                               fontWeight: FontWeight.w600,
                               fontSize: 20,
@@ -88,7 +88,7 @@ class _PatientScreenState extends State<PatientScreen> {
                       splashColor: primaryColor,
       
                       onTap: (){
-      
+                        Get.to(PatientDetailScreen(),transition: Transition.leftToRightWithFade);
                       },
                       child: ListTile(
                         contentPadding:
