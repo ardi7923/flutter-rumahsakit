@@ -12,3 +12,4 @@ part 'home_screen.dart';
 part 'patient_screen.dart';
 part 'patient_detail_screen.dart';
 part 'signin_screen.dart';
+part 'aboutus_screen.dart';

@@ -7,6 +7,7 @@ class GeneralLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PublicLayout(
+      
       appBar: AppBar(
         backgroundColor: primaryColor,
         elevation: 8,

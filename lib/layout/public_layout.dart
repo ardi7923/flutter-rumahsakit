@@ -9,7 +9,7 @@ class PublicLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      backgroundColor: backgroundColor,
       appBar: appBar,
       body: SafeArea(
         
