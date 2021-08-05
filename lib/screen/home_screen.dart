@@ -83,6 +83,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             CardMenu(
                               image: "assets/icons/patient.png",
                               title: "Cari Pasien",
+                              onTap: () {
+                                Get.to(PatientScreen(),transition: Transition.zoom);
+                              },
                             ),
                             CardMenu(
                               image: "assets/icons/health-check.png",
