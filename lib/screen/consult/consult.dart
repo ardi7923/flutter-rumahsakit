@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
+
 import 'package:flutter_rumahsakit/layout/layout.dart';
 import 'package:flutter_rumahsakit/screen/screen.dart';
 import 'package:flutter_rumahsakit/shared/shared.dart';
-import 'package:get/get.dart';
 
+part 'consult_doctor_screen.dart';
 part 'list_schedule_screen.dart';
+part 'consult_schedule_screen.dart';

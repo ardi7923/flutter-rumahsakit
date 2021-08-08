@@ -128,9 +128,7 @@ class _ConsultHomeScreenState extends State<ConsultHomeScreen> {
                               image: "assets/icons/add_schedule.png",
                               title: "Atur Jadwal",
                               onTap: () {
-                                Get.to(() => SigninScreen(
-                                      register: true,
-                                    ));
+                                Get.to(() => ConsultDoctorScreen());
                               },
                             ),
                           ],

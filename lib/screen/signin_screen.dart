@@ -9,11 +9,12 @@ class SigninScreen extends StatefulWidget {
 
 class _SigninScreenState extends State<SigninScreen> {
   TextEditingController usernameController = TextEditingController();
-
+  TextEditingController passwordController = TextEditingController();
+  
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: SingleChildScrollView(
+    return Scaffold(
+      body: SingleChildScrollView(
         child: Container(
           height: MediaQuery.of(context).size.height,
           color: backgroundColor,
@@ -80,7 +81,8 @@ class _SigninScreenState extends State<SigninScreen> {
                   border: Border.all(color: Colors.black),
                 ),
                 child: TextField(
-                  controller: usernameController,
+                  controller: passwordController,
+                  obscureText: true,
                   decoration: InputDecoration(
                       border: InputBorder.none, hintText: 'Masukkan Password'),
                 ),
