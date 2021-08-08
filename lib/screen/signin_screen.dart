@@ -1,6 +1,8 @@
 part of "screen.dart";
 
 class SigninScreen extends StatefulWidget {
+  final bool register;
+  SigninScreen({this.register});
   @override
   _SigninScreenState createState() => _SigninScreenState();
 }
@@ -20,7 +22,7 @@ class _SigninScreenState extends State<SigninScreen> {
               Row(
                 children: [
                   InkWell(
-                    onTap: (){
+                    onTap: () {
                       Get.offNamed("/home");
                     },
                     child: Container(
@@ -40,7 +42,6 @@ class _SigninScreenState extends State<SigninScreen> {
               Image.asset("assets/logo_kepulauan_yapen.png", width: 120),
               SizedBox(height: 10),
               Container(
-                
                 width: double.infinity,
                 margin: EdgeInsets.fromLTRB(16, 26, 0, 16),
                 child: Text(
@@ -94,7 +95,35 @@ class _SigninScreenState extends State<SigninScreen> {
                         "Login",
                         style:
                             poppinsFont.copyWith(fontWeight: FontWeight.bold),
-                      )))
+                      ))),
+              SizedBox(height: 10),
+              (widget.register)
+                  ? Container(
+                      margin: EdgeInsets.fromLTRB(16, 0, 16, 0),
+                      width: double.infinity,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text(
+                            "Belum Punya Akun ?",
+                            style: poppinsFont,
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          GestureDetector(
+                              onTap: () {
+                                Get.to(() => RegisterScreen() );
+                              },
+                              child: Text(
+                                "Buat Akun",
+                                style:
+                                    poppinsFont.copyWith(color: primaryColor),
+                              ))
+                        ],
+                      ),
+                    )
+                  : Container()
             ],
           ),
         ),

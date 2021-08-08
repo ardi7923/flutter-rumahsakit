@@ -92,7 +92,9 @@ class _HomeScreenState extends State<HomeScreen> {
                               image: "assets/icons/health-check.png",
                               title: "Konsultasi",
                               onTap: () {
-                                Get.to(() => SigninScreen());
+                                Get.to(() => SigninScreen(
+                                  register: true,
+                                ));
                               },
                             ),
                           ],
@@ -107,7 +109,9 @@ class _HomeScreenState extends State<HomeScreen> {
                               image: "assets/icons/doctor.png",
                               title: "Login Dokter",
                               onTap: () {
-                                Get.to(() => SigninScreen());
+                                Get.to(() => SigninScreen( 
+                                  register: false,
+                                 ));
                               },
                             ),
                             CardMenu(

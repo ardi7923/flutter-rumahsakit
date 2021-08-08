@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_rumahsakit/layout/layout.dart';
 import 'package:flutter_rumahsakit/model/model.dart';
 import 'package:flutter_rumahsakit/shared/shared.dart';
@@ -13,4 +14,5 @@ part 'home_screen.dart';
 part 'patient_screen.dart';
 part 'patient_detail_screen.dart';
 part 'signin_screen.dart';
+part 'register_screen.dart';
 part 'aboutus_screen.dart';
