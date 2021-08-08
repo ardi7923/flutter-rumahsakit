@@ -4,6 +4,7 @@ part of "shared.dart";
 Color backgroundColor = "#f5f6fa".toColor();
 Color secondaryColor = "#8c7ae6".toColor();
 Color primaryColor = "#9c88ff".toColor();
+Color errorColor = "#D9435E".toColor();
 
 TextStyle poppinsFont = GoogleFonts.poppins();
 
@@ -14,3 +15,6 @@ Widget loadingFadingCircle = SpinKitFadingCircle(
     size: 25,
   color: primaryColor
 );
+
+
+final authData = GetStorage();

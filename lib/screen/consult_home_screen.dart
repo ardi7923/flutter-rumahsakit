@@ -21,9 +21,8 @@ class _ConsultHomeScreenState extends State<ConsultHomeScreen> {
               child: Column(
                 children: [
                   ListTile(
-                    
                       leading: InkWell(
-                        onTap: (){
+                        onTap: () {
                           Get.offNamed("/home");
                         },
                         child: Icon(
@@ -41,9 +40,16 @@ class _ConsultHomeScreenState extends State<ConsultHomeScreen> {
                           ),
                         ],
                       ),
-                      trailing: Icon(
-                        Icons.logout,
-                        color: Colors.black,
+                      trailing: InkWell(
+                        onTap: () {
+                          _confirmLogout();
+                        },
+                        child: Container(
+                          child: Icon(
+                            Icons.logout,
+                            color: Colors.black,
+                          ),
+                        ),
                       )),
                   SizedBox(height: 15),
                   Row(
@@ -54,7 +60,7 @@ class _ConsultHomeScreenState extends State<ConsultHomeScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Hai, Ferguso",
+                            "Hai, ${authData.read('name')}",
                             style: poppinsFont.copyWith(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 20,
@@ -141,5 +147,24 @@ class _ConsultHomeScreenState extends State<ConsultHomeScreen> {
         ]),
       ),
     );
+  }
+
+  _confirmLogout() {
+    var baseDialog = BaseAlertDialog(
+        title: "Perhatian",
+        content: "Anda Yakin ingin Logout ?",
+        yesOnPressed: () async {
+          var response = await AuthService.logout();
+
+          if (response.value != null) {
+            authData.erase();
+            Get.offAllNamed("/home");
+          }
+        },
+        noOnPressed: () {},
+        yes: "Ya",
+        no: "Tidak");
+
+    showDialog(context: context, builder: (BuildContext context) => baseDialog);
   }
 }

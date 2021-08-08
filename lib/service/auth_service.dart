@@ -15,4 +15,18 @@ class AuthService {
       return ApiReturnValue(message: e.response!.data["message"]);
     }
   }
+
+  /*
+   * Logout 
+   */
+  static Future<ApiReturnValue> logout() async {
+    await Future.delayed(Duration(milliseconds: 500));
+
+    try {
+      Response response = await dio().post('/logout');
+      return ApiReturnValue(value: response.data["message"]);
+    } on DioError catch (e) {
+      return ApiReturnValue(message: e.response!.data["message"]);
+    }
+  }
 }
