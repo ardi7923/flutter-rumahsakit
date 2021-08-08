@@ -4,9 +4,9 @@ class CardMenu extends StatelessWidget {
 
   final String image;
   final String title;
-  final Function onTap;
+  final Function? onTap;
   
-  CardMenu({this.image,this.title, this.onTap});
+  CardMenu({required this.image, required this.title, this.onTap});
   
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class CardMenu extends StatelessWidget {
           splashColor: primaryColor,
           onTap: (){
              if(onTap != null){
-               onTap();
+               onTap!();
              }
           },
           child: Column(

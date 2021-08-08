@@ -193,7 +193,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
         ),
         child: TextFormField(
           obscureText: obsecure,
-
           decoration: InputDecoration(
             border: InputBorder.none,
           ),

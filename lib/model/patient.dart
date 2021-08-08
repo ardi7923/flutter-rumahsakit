@@ -12,13 +12,15 @@ class Patient extends Equatable {
   final String status;
 
   Patient(
-      {this.id,
-      this.name,
-      this.gender,
-      this.address,
-      this.phone,
-      this.room,
-      this.status});
+      {
+        required this.id,
+      required this.name,
+      required this.gender,
+      required this.address,
+      required this.phone,
+      required this.room,
+      required this.status
+      });
 
   @override
   List<Object> get props => [];

@@ -3,7 +3,7 @@ part of "screen.dart";
 class PatientDetailScreen extends StatefulWidget {
   final Patient patient;
 
-  PatientDetailScreen({this.patient});
+  PatientDetailScreen({required this.patient});
 
   @override
   _PatientDetailScreenState createState() => _PatientDetailScreenState();
@@ -25,28 +25,47 @@ class _PatientDetailScreenState extends State<PatientDetailScreen> {
               height: MediaQuery.of(context).size.height / 3,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                        color: secondaryColor,
-                        borderRadius: BorderRadius.circular(20)),
-                    child: Image.asset(
-                      "assets/icons/patient.png",
-                      width: 80,
+                  InkWell(
+                    onTap: () {
+                      Get.to(PatientScreen());
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                          color: Colors.black.withOpacity(0.2),
+                          borderRadius: BorderRadius.circular(20)),
+                      margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                      child: Icon(Icons.arrow_back_ios_new),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          color: secondaryColor,
+                          borderRadius: BorderRadius.circular(20)),
+                      child: Image.asset(
+                        "assets/icons/patient.png",
+                        width: 80,
+                      ),
                     ),
                   ),
                   SizedBox(height: 10),
-                  Text(
-                    widget.patient.name,
-                    style: poppinsFont.copyWith(
-                        fontWeight: FontWeight.bold, fontSize: 20),
-                  )
+                  Center(
+                    child: Text(
+                      widget.patient.name,
+                      style: poppinsFont.copyWith(
+                          fontWeight: FontWeight.bold, fontSize: 20),
+                    ),
+                  ),
+                  SizedBox(height: 15),
                 ],
               ),
             ),
             Container(
-              height: MediaQuery.of(context).size.height / 1.7,
+              height: MediaQuery.of(context).size.height / 1.9,
               width: double.infinity,
               margin: EdgeInsets.only(
                   top: MediaQuery.of(context).size.height / 3.2),

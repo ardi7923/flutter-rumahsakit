@@ -2,7 +2,7 @@ part of "screen.dart";
 
 class SigninScreen extends StatefulWidget {
   final bool register;
-  SigninScreen({this.register});
+  SigninScreen({required this.register});
   @override
   _SigninScreenState createState() => _SigninScreenState();
 }

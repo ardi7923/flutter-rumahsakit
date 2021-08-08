@@ -9,9 +9,6 @@ class _PatientScreenState extends State<PatientScreen> {
   @override
   Widget build(BuildContext context) {
     return GeneralLayout(
-      onBackPressed: () {
-        Get.offAllNamed("/home");
-      },
       child: SingleChildScrollView(
         child: Column(
           children: [
@@ -25,6 +22,19 @@ class _PatientScreenState extends State<PatientScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    InkWell(
+                      onTap: () {
+                        Get.offNamed("/home");
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                            color: Colors.black.withOpacity(0.2),
+                            borderRadius: BorderRadius.circular(20)),
+                        margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                        child: Icon(Icons.arrow_back_ios_new),
+                      ),
+                    ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -66,7 +76,7 @@ class _PatientScreenState extends State<PatientScreen> {
                 )),
             Container(
               margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
-              height: MediaQuery.of(context).size.height / 1.63,
+              height: MediaQuery.of(context).size.height / 1.2,
               child: ListView(
                   children: mockPatient
                       .map((e) => Card(
@@ -77,7 +87,10 @@ class _PatientScreenState extends State<PatientScreen> {
                               borderRadius: BorderRadius.circular(15),
                               splashColor: primaryColor,
                               onTap: () {
-                                Get.to(() => PatientDetailScreen(patient: e,),
+                                Get.to(
+                                    () => PatientDetailScreen(
+                                          patient: e,
+                                        ),
                                     transition: Transition.leftToRightWithFade);
                               },
                               child: ListTile(
@@ -96,7 +109,9 @@ class _PatientScreenState extends State<PatientScreen> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      (e.gender == Gender.Laki) ? "Laki-laki" : "Perempuan",
+                                      (e.gender == Gender.Laki)
+                                          ? "Laki-laki"
+                                          : "Perempuan",
                                       style: poppinsFont.copyWith(fontSize: 10),
                                     ),
                                     Text(
