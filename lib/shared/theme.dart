@@ -7,4 +7,10 @@ Color primaryColor = "#9c88ff".toColor();
 
 TextStyle poppinsFont = GoogleFonts.poppins();
 
-double widthSize (context) =>  MediaQuery.of(context).size.width;
+double widthScreen (context) =>  MediaQuery.of(context).size.width;
+double heightScreen (context) =>  MediaQuery.of(context).size.height;
+
+Widget loadingFadingCircle = SpinKitFadingCircle(
+    size: 25,
+  color: primaryColor
+);

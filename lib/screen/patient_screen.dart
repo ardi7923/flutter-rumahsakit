@@ -6,6 +6,13 @@ class PatientScreen extends StatefulWidget {
 }
 
 class _PatientScreenState extends State<PatientScreen> {
+  TextEditingController searchController = TextEditingController();
+
+  void initState() {
+    super.initState();
+    context.read<PatientCubit>().getPatient(searchController.text.toString());
+  }
+
   @override
   Widget build(BuildContext context) {
     return GeneralLayout(
@@ -68,69 +75,116 @@ class _PatientScreenState extends State<PatientScreen> {
                     border: Border.all(color: Colors.black),
                   ),
                   child: TextFormField(
+                    controller: searchController,
+                    onChanged: (value) {
+                      setState(() {
+                        context
+                            .read<PatientCubit>()
+                            .getPatient(value.toString());
+                      });
+                    },
                     decoration: InputDecoration(
                         prefixIcon: Icon(Icons.search_rounded),
                         border: InputBorder.none,
                         hintText: "Cari Pasien"),
                   ),
                 )),
-            Container(
-              margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
-              height: MediaQuery.of(context).size.height / 1.2,
-              child: ListView(
-                  children: mockPatient
-                      .map((e) => Card(
-                            elevation: 8,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15)),
-                            child: InkWell(
-                              borderRadius: BorderRadius.circular(15),
-                              splashColor: primaryColor,
-                              onTap: () {
-                                Get.to(
-                                    () => PatientDetailScreen(
-                                          patient: e,
-                                        ),
-                                    transition: Transition.leftToRightWithFade);
-                              },
-                              child: ListTile(
-                                contentPadding: EdgeInsets.symmetric(
-                                    vertical: 5, horizontal: 5),
-                                leading: Image.asset(
-                                  "assets/icons/patient.png",
-                                  width: 50,
-                                ),
-                                title: Text(
-                                  e.name,
-                                  style: poppinsFont.copyWith(
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                subtitle: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      (e.gender == Gender.Laki)
-                                          ? "Laki-laki"
-                                          : "Perempuan",
-                                      style: poppinsFont.copyWith(fontSize: 10),
-                                    ),
-                                    Text(
-                                      e.room,
-                                      style: poppinsFont.copyWith(fontSize: 10),
-                                    ),
-                                  ],
-                                ),
-                                trailing: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Icon(Icons.arrow_forward_ios_outlined),
-                                  ],
-                                ),
-                              ),
+            RefreshIndicator(
+              onRefresh: () {
+                return context
+                    .read<PatientCubit>()
+                    .getPatient(searchController.text.toString());
+              },
+              child: Container(
+                  margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                  height: MediaQuery.of(context).size.height / 1.42,
+                  child: BlocBuilder<PatientCubit, PatientState>(
+                      builder: (context, state) {
+                    if (state is PatientLoaded) {
+                      if (state.patients.length == 0) {
+                        return Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset("assets/icons/dataempty.png",width: 150,),
+                            SizedBox(
+                              height: 20,
                             ),
-                          ))
-                      .toList()),
+                            Text(
+                              "Data Tidak Ditemukan",
+                              style: poppinsFont.copyWith(
+                                  fontWeight: FontWeight.bold,fontSize: 20),
+                            ),
+                            SizedBox(
+                              height: 100,
+                            ),
+                          ],
+                        );
+                      }
+                      return ListView(
+                          children: state.patients
+                              .map((e) => Card(
+                                    elevation: 8,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(15)),
+                                    child: InkWell(
+                                      borderRadius: BorderRadius.circular(15),
+                                      splashColor: primaryColor,
+                                      onTap: () {
+                                        Get.to(
+                                          () => PatientDetailScreen(
+                                            patient: e,
+                                          ),
+                                        );
+                                      },
+                                      child: ListTile(
+                                        contentPadding: EdgeInsets.symmetric(
+                                            vertical: 5, horizontal: 5),
+                                        leading: Image.asset(
+                                          "assets/icons/patient.png",
+                                          width: 50,
+                                        ),
+                                        title: Text(
+                                          e.name,
+                                          style: poppinsFont.copyWith(
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        subtitle: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              (e.gender == Gender.laki)
+                                                  ? "Laki-laki"
+                                                  : "Perempuan",
+                                              style: poppinsFont.copyWith(
+                                                  fontSize: 10),
+                                            ),
+                                            Text(
+                                              e.room,
+                                              style: poppinsFont.copyWith(
+                                                  fontSize: 10),
+                                            ),
+                                          ],
+                                        ),
+                                        trailing: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Icon(Icons
+                                                .arrow_forward_ios_outlined),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ))
+                              .toList());
+                    } else {
+                      return loadingFadingCircle;
+                    }
+                  })),
             )
           ],
         ),

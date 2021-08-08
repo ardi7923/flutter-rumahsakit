@@ -7,7 +7,7 @@ Dio dio(){
   Dio dio = new Dio();
   final authData =  GetStorage();
 
-  dio.options.baseUrl        = "http: //192.168.43.171/rumahsakit/public/api/v1";
+  dio.options.baseUrl        = "http://192.168.43.171/rumahsakit/public/api/v1";
   dio.options.connectTimeout = 5000;
   dio.options.receiveTimeout = 5000;
   dio.options.responseType   = ResponseType.json;

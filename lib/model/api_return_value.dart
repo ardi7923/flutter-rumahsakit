@@ -1,4 +1,4 @@
-part of 'models.dart';
+part of 'model.dart';
 
 class ApiReturnValue<T> {
   final T? value;

@@ -13,9 +13,6 @@ class _PatientDetailScreenState extends State<PatientDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return GeneralLayout(
-      onBackPressed: () {
-        Get.off(PatientScreen());
-      },
       child: SingleChildScrollView(
         child: Stack(
           children: [
@@ -65,7 +62,7 @@ class _PatientDetailScreenState extends State<PatientDetailScreen> {
               ),
             ),
             Container(
-              height: MediaQuery.of(context).size.height / 1.9,
+              height: MediaQuery.of(context).size.height / 1.5,
               width: double.infinity,
               margin: EdgeInsets.only(
                   top: MediaQuery.of(context).size.height / 3.2),
@@ -91,7 +88,7 @@ class _PatientDetailScreenState extends State<PatientDetailScreen> {
                           datapatient("nama", widget.patient.name),
                           datapatient(
                               "Jenis Kelamin",
-                              (widget.patient.gender == Gender.Laki)
+                              (widget.patient.gender == Gender.laki)
                                   ? "Laki-laki"
                                   : "Perempuan"),
                           datapatient("Ruangan", widget.patient.room),
@@ -113,9 +110,10 @@ class _PatientDetailScreenState extends State<PatientDetailScreen> {
 
   Widget datapatient(String title, value) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 5),
+      margin: EdgeInsets.symmetric(vertical: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             title,

@@ -84,8 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               image: "assets/icons/patient.png",
                               title: "Cari Pasien",
                               onTap: () {
-                                Get.to(() => PatientScreen(),
-                                    transition: Transition.zoom);
+                                Get.to(() => PatientScreen());
                               },
                             ),
                             CardMenu(
@@ -118,8 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               image: "assets/icons/hospital.png",
                               title: "Tentang Kami",
                               onTap: () {
-                                Get.to(() => AboutusScreen(),
-                                    transition: Transition.zoom);
+                                Get.to(() => AboutusScreen());
                               },
                             ),
                           ],

@@ -69,7 +69,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 children: [
                   (gender == "M")
                       ? Container(
-                          width: widthSize(context) / 2.3,
+                          width: widthScreen(context) / 2.3,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: primaryColor,
@@ -88,7 +88,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           });
                         },
                         child: Container(
-                            width: widthSize(context) / 2.3,
+                            width: widthScreen(context) / 2.3,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 color: backgroundColor,
@@ -103,7 +103,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                   (gender == "F")
                       ? Container(
-                          width: widthSize(context) / 2.3,
+                          width: widthScreen(context) / 2.3,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: primaryColor,
@@ -122,7 +122,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           });
                         },
                         child: Container(
-                            width: widthSize(context) / 2.3,
+                            width: widthScreen(context) / 2.3,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 color: backgroundColor,
