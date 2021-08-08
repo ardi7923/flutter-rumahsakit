@@ -7,7 +7,6 @@ class GeneralLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PublicLayout(
-      
       child: child,
     );
   }

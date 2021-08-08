@@ -43,7 +43,7 @@ class _SigninScreenState extends State<SigninScreen> {
               SizedBox(height: 10),
               Container(
                 width: double.infinity,
-                margin: EdgeInsets.fromLTRB(16, 26, 0, 16),
+                margin: EdgeInsets.fromLTRB(16, 26, 0, 0),
                 child: Text(
                   'Username',
                   style: poppinsFont.copyWith(fontWeight: FontWeight.bold),
@@ -51,7 +51,7 @@ class _SigninScreenState extends State<SigninScreen> {
               ),
               Container(
                 width: double.infinity,
-                margin: EdgeInsets.fromLTRB(16, 0, 16, 0),
+                margin: EdgeInsets.fromLTRB(16, 0, 16, 15),
                 padding: EdgeInsets.symmetric(horizontal: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
@@ -65,7 +65,7 @@ class _SigninScreenState extends State<SigninScreen> {
               ),
               Container(
                 width: double.infinity,
-                margin: EdgeInsets.fromLTRB(16, 8, 0, 16),
+                margin: EdgeInsets.fromLTRB(16, 8, 0, 0),
                 child: Text(
                   'Password',
                   style: poppinsFont.copyWith(fontWeight: FontWeight.bold),
@@ -90,7 +90,9 @@ class _SigninScreenState extends State<SigninScreen> {
                   margin: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
                   child: ElevatedButton(
                       style: ElevatedButton.styleFrom(primary: primaryColor),
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(() => ConsultHomeScreen());
+                      },
                       child: Text(
                         "Login",
                         style:

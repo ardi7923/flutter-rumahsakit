@@ -105,14 +105,17 @@ class _PatientScreenState extends State<PatientScreen> {
                         return Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Image.asset("assets/icons/dataempty.png",width: 150,),
+                            Image.asset(
+                              "assets/icons/dataempty.png",
+                              width: 150,
+                            ),
                             SizedBox(
                               height: 20,
                             ),
                             Text(
                               "Data Tidak Ditemukan",
                               style: poppinsFont.copyWith(
-                                  fontWeight: FontWeight.bold,fontSize: 20),
+                                  fontWeight: FontWeight.bold, fontSize: 20),
                             ),
                             SizedBox(
                               height: 100,

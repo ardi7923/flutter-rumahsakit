@@ -18,3 +18,5 @@ part 'patient_detail_screen.dart';
 part 'signin_screen.dart';
 part 'register_screen.dart';
 part 'aboutus_screen.dart';
+
+part 'consult_home_screen.dart';
