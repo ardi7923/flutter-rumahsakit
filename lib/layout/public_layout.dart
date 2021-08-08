@@ -1,18 +1,17 @@
 part of "layout.dart";
 
 class PublicLayout extends StatelessWidget {
-  final Widget? appBar;
+  final PreferredSizeWidget? appBar;
   final Widget child;
 
   PublicLayout({this.appBar, required this.child});
-  
-  @override
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: appBar,
       backgroundColor: backgroundColor,
       body: SafeArea(
-        
         child: Container(
           color: backgroundColor,
           child: child,

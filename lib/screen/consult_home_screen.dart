@@ -35,7 +35,7 @@ class _ConsultHomeScreenState extends State<ConsultHomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "Ferguso",
+                            "Konsultasi",
                             style: poppinsFont.copyWith(
                                 fontWeight: FontWeight.bold),
                           ),
@@ -121,7 +121,7 @@ class _ConsultHomeScreenState extends State<ConsultHomeScreen> {
                               image: "assets/icons/list_schedule.png",
                               title: "Lihat Jadwal",
                               onTap: () {
-                                Get.to(() => PatientScreen());
+                                Get.to(() => ListScheduleScreen());
                               },
                             ),
                             CardMenu(
