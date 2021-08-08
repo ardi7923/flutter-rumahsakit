@@ -6,6 +6,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final authData = GetStorage();
+
   @override
   Widget build(BuildContext context) {
     return PublicLayout(
@@ -91,9 +93,13 @@ class _HomeScreenState extends State<HomeScreen> {
                               image: "assets/icons/health-check.png",
                               title: "Konsultasi",
                               onTap: () {
-                                Get.to(() => SigninScreen(
-                                  register: true,
-                                ));
+                                if (authData.read("role") == "patient") {
+                                  Get.to(() => ConsultHomeScreen());
+                                } else {
+                                  Get.to(() => SigninScreen(
+                                        register: true,
+                                      ));
+                                }
                               },
                             ),
                           ],
@@ -108,9 +114,9 @@ class _HomeScreenState extends State<HomeScreen> {
                               image: "assets/icons/doctor.png",
                               title: "Login Dokter",
                               onTap: () {
-                                Get.to(() => SigninScreen( 
-                                  register: false,
-                                 ));
+                                Get.to(() => SigninScreen(
+                                      register: false,
+                                    ));
                               },
                             ),
                             CardMenu(

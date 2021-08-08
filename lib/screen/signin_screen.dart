@@ -2,6 +2,7 @@ part of "screen.dart";
 
 class SigninScreen extends StatefulWidget {
   final bool register;
+
   SigninScreen({required this.register});
   @override
   _SigninScreenState createState() => _SigninScreenState();
@@ -10,7 +11,9 @@ class SigninScreen extends StatefulWidget {
 class _SigninScreenState extends State<SigninScreen> {
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  
+  bool isLoading = false;
+  final authData = GetStorage();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,19 +90,29 @@ class _SigninScreenState extends State<SigninScreen> {
                       border: InputBorder.none, hintText: 'Masukkan Password'),
                 ),
               ),
-              Container(
-                  width: double.infinity,
-                  margin: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-                  child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(primary: primaryColor),
-                      onPressed: () {
-                        Get.to(() => ConsultHomeScreen());
-                      },
-                      child: Text(
-                        "Login",
-                        style:
-                            poppinsFont.copyWith(fontWeight: FontWeight.bold),
-                      ))),
+              (!isLoading)
+                  ? Container(
+                      width: double.infinity,
+                      margin:
+                          EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+                      child: ElevatedButton(
+                          style:
+                              ElevatedButton.styleFrom(primary: primaryColor),
+                          onPressed: () {
+                            setState(() {
+                              isLoading = true;
+                            });
+                            _submitButton(usernameController.text.toString(),
+                                passwordController.text.toString());
+                          },
+                          child: Text(
+                            "Login",
+                            style: poppinsFont.copyWith(
+                                fontWeight: FontWeight.bold),
+                          )))
+                  : Container(
+                      margin: EdgeInsets.symmetric(vertical: 20),
+                      child: loadingFadingCircle),
               SizedBox(height: 10),
               (widget.register)
                   ? Container(
@@ -117,7 +130,7 @@ class _SigninScreenState extends State<SigninScreen> {
                           ),
                           GestureDetector(
                               onTap: () {
-                                Get.to(() => RegisterScreen() );
+                                Get.to(() => RegisterScreen());
                               },
                               child: Text(
                                 "Buat Akun",
@@ -133,5 +146,26 @@ class _SigninScreenState extends State<SigninScreen> {
         ),
       ),
     );
+  }
+
+  _submitButton(username, password) async {
+    var response = await AuthService.login(username, password);
+
+    if (response.value != null) {
+      authData.write('name', response.value["name"]);
+      authData.write('token', response.value["token"]);
+      authData.write('role', response.value['role']);
+
+      if(response.value['role'] == "patient"){
+        Get.offAll(() => ConsultHomeScreen() );
+      }
+      
+    } else {
+
+    }
+
+    setState(() {
+      isLoading = false;
+    });
   }
 }
