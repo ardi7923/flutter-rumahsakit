@@ -69,20 +69,6 @@ class _DoctorHomeScreenState extends State<DoctorHomeScreen> {
                           SizedBox(
                             height: 6,
                           ),
-                          Text(
-                            "Konsultasikan diri anda",
-                            style: poppinsFont.copyWith(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 16,
-                                color: Colors.black),
-                          ),
-                          Text(
-                            "Dengan Dokter Terbaik Kami",
-                            style: poppinsFont.copyWith(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 16,
-                                color: Colors.black),
-                          ),
                         ],
                       ),
                       Image.asset(
@@ -125,14 +111,14 @@ class _DoctorHomeScreenState extends State<DoctorHomeScreen> {
                           children: [
                             CardMenu(
                               image: "assets/icons/list_schedule.png",
-                              title: "Lihat Jadwal",
+                              title: "Konfirmasi Jadwal",
                               onTap: () {
-                                Get.to(() => ListScheduleScreen());
+                                Get.to(() => DoctorConfirmScheduleScreen());
                               },
                             ),
                             CardMenu(
                               image: "assets/icons/add_schedule.png",
-                              title: "Atur Jadwal",
+                              title: "Lihat Jadwal",
                               onTap: () {
                                 Get.to(() => ConsultDoctorScreen());
                               },

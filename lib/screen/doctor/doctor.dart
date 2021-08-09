@@ -7,3 +7,5 @@ import 'package:flutter_rumahsakit/widget/widget.dart';
 import 'package:get/get.dart';
 
 part "doctor_home_screen.dart";
+part "doctor_confirm_schedule_screen.dart";
+part "doctor_confirm_detail_screen.dart";
