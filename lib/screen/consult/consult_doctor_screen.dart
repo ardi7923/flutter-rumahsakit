@@ -9,6 +9,7 @@ class _ConsultDoctorScreenState extends State<ConsultDoctorScreen> {
   DateTime selectedDate = DateTime.now();
   String? name;
   String? specialist;
+  Doctor? doctor;
   /*
    * date picker 
    */
@@ -18,10 +19,18 @@ class _ConsultDoctorScreenState extends State<ConsultDoctorScreen> {
         initialDate: selectedDate,
         firstDate: DateTime(2015, 8),
         lastDate: DateTime(2101));
-    if (picked != null && picked != selectedDate)
+    if (picked != null && picked != selectedDate) {
       setState(() {
         selectedDate = picked;
       });
+      Navigator.pop(context);
+      Get.to(() => ConsultScheduleScreen(
+            doctor: doctor!,
+            selectedDate: selectedDate,
+          ));
+
+      
+    }
   }
 
   @override
@@ -67,6 +76,7 @@ class _ConsultDoctorScreenState extends State<ConsultDoctorScreen> {
                               setState(() {
                                 name = e.name;
                                 specialist = e.specialist;
+                                doctor = e;
                               });
                               showModalBottomSheet(
                                   context: context,
@@ -183,8 +193,9 @@ class _ConsultDoctorScreenState extends State<ConsultDoctorScreen> {
                                                 onPressed: () {
                                                   Get.to(() =>
                                                       ConsultScheduleScreen(
-                                                        doctor:  e,
-                                                        selectedDate: selectedDate,
+                                                        doctor: e,
+                                                        selectedDate:
+                                                            selectedDate,
                                                       ));
                                                 },
                                                 child: Text(

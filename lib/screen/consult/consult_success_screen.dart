@@ -7,9 +7,9 @@ class ConsultSuccessScreen extends StatelessWidget {
       title: "Pengajuan Jadwal Berhasil !!",
       subtitle: "Silahkan Tunggu konfirmasi dari dokter anda",
       imagePath: "assets/icons/contract.png",
-      titleButtonPrimary: "Buat Jadwal Lagi",
+      titleButtonPrimary: "Lihat Jadwal",
       onPressedPrimaryButton: (){
-        Get.offAll(() => ConsultDoctorScreen());
+        Get.offAll(() => ListScheduleScreen());
       },
       secondaryButton: true,
       titleButtonSecondary: "Kembali Ke Home",
