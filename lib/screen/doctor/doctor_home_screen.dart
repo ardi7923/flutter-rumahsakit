@@ -120,7 +120,7 @@ class _DoctorHomeScreenState extends State<DoctorHomeScreen> {
                               image: "assets/icons/add_schedule.png",
                               title: "Lihat Jadwal",
                               onTap: () {
-                                Get.to(() => ConsultDoctorScreen());
+                                Get.to(() => DoctorSchedule());
                               },
                             ),
                           ],
