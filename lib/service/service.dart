@@ -4,3 +4,4 @@ import 'package:flutter_rumahsakit/service/dio.dart';
 
 part "patient_service.dart";
 part "auth_service.dart";
+part "doctor_service.dart";

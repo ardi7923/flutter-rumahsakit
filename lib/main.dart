@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_rumahsakit/cubit/doctor_cubit.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => PatientCubit()),
+        BlocProvider(create: (_) => DoctorCubit()),
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,

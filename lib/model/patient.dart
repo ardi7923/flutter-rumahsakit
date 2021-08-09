@@ -33,21 +33,3 @@ class Patient extends Equatable {
   List<Object> get props => [id, name, gender, address, phone, room, status];
 }
 
-List<Patient> mockPatient = [
-  Patient(
-      id: 1,
-      name: "Albertus Cigaretes",
-      gender: Gender.laki,
-      room: "Rawat Inap TB Paru",
-      address: "Jalan Faisal no 17 Kecamatan Rappocini",
-      phone: "085 340 630 610",
-      status: "Pemulihan"),
-  Patient(
-      id: 2,
-      name: "Hercules",
-      gender: Gender.perempuan,
-      room: "Ruang Bedah",
-      address: "Jalan Sungai Saddang Baru",
-      phone: "085 340 630 620",
-      status: "Rawaat Inap"),
-];

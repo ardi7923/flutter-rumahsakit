@@ -2,7 +2,7 @@ part of "service.dart";
 
 class PatientService {
   /* 
-    get Data Cashier
+    get Data Patient
   */
   static Future<ApiReturnValue<List<Patient>>> getData(search) async {
     await Future.delayed(Duration(milliseconds: 500));
