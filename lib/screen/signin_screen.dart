@@ -158,6 +158,8 @@ class _SigninScreenState extends State<SigninScreen> {
 
       if(response.value['role'] == "patient"){
         Get.offAll(() => ConsultHomeScreen() );
+      }else if(response.value['role'] == "doctor"){
+        Get.offAll(() => DoctorHomeScreen() );
       }
       
     } else {

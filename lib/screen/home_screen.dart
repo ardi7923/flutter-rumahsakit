@@ -95,6 +95,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               onTap: () {
                                 if (authData.read("role") == "patient") {
                                   Get.to(() => ConsultHomeScreen());
+                                } else if(authData.read("role") == "doctor"){
+
                                 } else {
                                   Get.to(() => SigninScreen(
                                         register: true,
@@ -114,9 +116,14 @@ class _HomeScreenState extends State<HomeScreen> {
                               image: "assets/icons/doctor.png",
                               title: "Login Dokter",
                               onTap: () {
-                                Get.to(() => SigninScreen(
-                                      register: false,
-                                    ));
+                                if (authData.read("role") == "patient") {
+                                }else if(authData.read("role") == "doctor"){
+                                  Get.to(() => DoctorHomeScreen());
+                                } else {
+                                  Get.to(() => SigninScreen(
+                                        register: false,
+                                      ));
+                                }
                               },
                             ),
                             CardMenu(
