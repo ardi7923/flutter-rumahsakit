@@ -182,7 +182,10 @@ class _ConsultDoctorScreenState extends State<ConsultDoctorScreen> {
                                                     primary: primaryColor),
                                                 onPressed: () {
                                                   Get.to(() =>
-                                                      ConsultScheduleScreen());
+                                                      ConsultScheduleScreen(
+                                                        doctor:  e,
+                                                        selectedDate: selectedDate,
+                                                      ));
                                                 },
                                                 child: Text(
                                                   "Cek Jadwal",
@@ -200,7 +203,7 @@ class _ConsultDoctorScreenState extends State<ConsultDoctorScreen> {
                                 width: 60,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
-                                    color: Colors.red,
+                                    color: Colors.grey,
                                     image: DecorationImage(
                                         image: NetworkImage(e.image),
                                         fit: BoxFit.fitHeight)),

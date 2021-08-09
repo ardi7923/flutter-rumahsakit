@@ -3,8 +3,8 @@ part of "layout.dart";
 class PublicLayout extends StatelessWidget {
   final PreferredSizeWidget? appBar;
   final Widget child;
-
-  PublicLayout({this.appBar, required this.child});
+  final Widget? bottomNavigationBar;
+  PublicLayout({this.appBar, required this.child,this.bottomNavigationBar});
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +17,7 @@ class PublicLayout extends StatelessWidget {
           child: child,
         ),
       ),
+      bottomNavigationBar: bottomNavigationBar,
     );
   }
 }

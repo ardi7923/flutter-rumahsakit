@@ -5,6 +5,7 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 import 'cubit/patient_cubit.dart';
+import 'cubit/schedule_cubit.dart';
 import 'screen/screen.dart';
 
 void main() {
@@ -12,13 +13,13 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => PatientCubit()),
         BlocProvider(create: (_) => DoctorCubit()),
+        BlocProvider(create: (_) => ScheduleCubit()),
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
