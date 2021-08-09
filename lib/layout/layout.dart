@@ -4,3 +4,4 @@ import 'package:flutter_rumahsakit/shared/shared.dart';
 
 part "public_layout.dart";
 part "general_layout.dart";
+part "ilustration_layout.dart";

@@ -13,3 +13,4 @@ import 'package:flutter_rumahsakit/shared/shared.dart';
 part 'consult_doctor_screen.dart';
 part 'list_schedule_screen.dart';
 part 'consult_schedule_screen.dart';
+part 'consult_success_screen.dart';

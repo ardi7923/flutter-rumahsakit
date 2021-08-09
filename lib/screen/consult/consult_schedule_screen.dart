@@ -198,7 +198,9 @@ class _ConsultScheduleScreenState extends State<ConsultScheduleScreen> {
         width: double.infinity,
         height: 40,
         child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.to(() => ConsultSuccessScreen());
+            },
             style: ElevatedButton.styleFrom(primary: primaryColor),
             child: Text(
               "Ajukan Jadwal",
@@ -208,49 +210,4 @@ class _ConsultScheduleScreenState extends State<ConsultScheduleScreen> {
     );
   }
 
-  timeUnvaialable() {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: errorColor,
-      ),
-      child: Center(
-        child: Text(
-          "18.00 - 19.00",
-          style: poppinsFont.copyWith(color: Colors.white),
-        ),
-      ),
-    );
-  }
-
-  timeAvailable() {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Colors.grey,
-      ),
-      child: Center(
-        child: Text(
-          "18.00 - 19.00",
-          style: poppinsFont,
-        ),
-      ),
-    );
-  }
-
-  timeSelected() {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: primaryColor,
-      ),
-      child: Center(
-        child: Text("17.00 - 18.00",
-            style: poppinsFont.copyWith(color: Colors.white)),
-      ),
-    );
-  }
 }
