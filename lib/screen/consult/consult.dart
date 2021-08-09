@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rumahsakit/cubit/doctor_cubit.dart';
 import 'package:flutter_rumahsakit/cubit/schedule_cubit.dart';
 import 'package:flutter_rumahsakit/model/model.dart';
+import 'package:flutter_rumahsakit/service/service.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

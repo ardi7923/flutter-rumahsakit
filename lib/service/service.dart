@@ -7,3 +7,4 @@ part "patient_service.dart";
 part "auth_service.dart";
 part "doctor_service.dart";
 part "schedule_service.dart";
+part "submission_schedule_service.dart";

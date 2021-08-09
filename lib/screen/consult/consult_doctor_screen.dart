@@ -24,12 +24,11 @@ class _ConsultDoctorScreenState extends State<ConsultDoctorScreen> {
         selectedDate = picked;
       });
       Navigator.pop(context);
+
       Get.to(() => ConsultScheduleScreen(
             doctor: doctor!,
             selectedDate: selectedDate,
           ));
-
-      
     }
   }
 
@@ -191,6 +190,7 @@ class _ConsultDoctorScreenState extends State<ConsultDoctorScreen> {
                                                 style: ElevatedButton.styleFrom(
                                                     primary: primaryColor),
                                                 onPressed: () {
+                                                  Navigator.pop(context);
                                                   Get.to(() =>
                                                       ConsultScheduleScreen(
                                                         doctor: e,

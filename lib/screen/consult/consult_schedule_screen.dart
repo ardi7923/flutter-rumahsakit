@@ -11,6 +11,7 @@ class ConsultScheduleScreen extends StatefulWidget {
 
 class _ConsultScheduleScreenState extends State<ConsultScheduleScreen> {
   int? scheduleId;
+  bool isLoading = false;
 
   @override
   void initState() {
@@ -137,7 +138,8 @@ class _ConsultScheduleScreenState extends State<ConsultScheduleScreen> {
                                             child: Center(
                                               child: Text(
                                                 e.time,
-                                                style: poppinsFont.copyWith(color: Colors.white),
+                                                style: poppinsFont.copyWith(
+                                                    color: Colors.white),
                                               ),
                                             ),
                                           )
@@ -193,21 +195,30 @@ class _ConsultScheduleScreenState extends State<ConsultScheduleScreen> {
           )
         ],
       ),
-      bottomNavigationBar: Container(
-        margin: EdgeInsets.symmetric(horizontal: 16, vertical: 15),
-        width: double.infinity,
-        height: 40,
-        child: ElevatedButton(
-            onPressed: () {
-              Get.to(() => ConsultSuccessScreen());
-            },
-            style: ElevatedButton.styleFrom(primary: primaryColor),
-            child: Text(
-              "Ajukan Jadwal",
-              style: poppinsFont.copyWith(fontWeight: FontWeight.bold),
-            )),
-      ),
+      bottomNavigationBar: (!isLoading)
+          ? Container(
+              margin: EdgeInsets.symmetric(horizontal: 16, vertical: 15),
+              width: double.infinity,
+              height: 40,
+              child: ElevatedButton(
+                  onPressed: () async {
+                    setState(() {
+                      isLoading = true;
+                    });
+                    var response =
+                        await SubmissionScheduleService.submit(scheduleId);
+
+                    if (response.value != null) {
+                      Get.offAll(() => ConsultSuccessScreen());
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(primary: primaryColor),
+                  child: Text(
+                    "Ajukan Jadwal",
+                    style: poppinsFont.copyWith(fontWeight: FontWeight.bold),
+                  )),
+            )
+          : Container(height: 40, child: loadingFadingCircle),
     );
   }
-
 }
