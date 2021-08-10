@@ -11,3 +11,4 @@ part "submission_schedule_service.dart";
 part "patient_schedule_service.dart";
 part "doctor_schedule_service.dart";
 part "doctor_confirm_service.dart";
+part "register_service.dart";

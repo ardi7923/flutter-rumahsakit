@@ -67,7 +67,7 @@ class _SigninScreenState extends State<SigninScreen> {
                   ),
                   child: TextFormField(
                     controller: usernameController,
-                    autovalidateMode: AutovalidateMode.always,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Masukkan Username'),
