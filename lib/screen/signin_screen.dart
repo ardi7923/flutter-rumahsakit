@@ -67,12 +67,22 @@ class _SigninScreenState extends State<SigninScreen> {
                   ),
                   child: TextFormField(
                     controller: usernameController,
+                    autovalidateMode: AutovalidateMode.always,
                     decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Masukkan Username'),
+                    onChanged: (value) {
+                      setState(() {
+                        errorApi = null;
+                      });
+                    },
                     validator: (value) {
                       if (value!.isEmpty) {
                         return "Isian Tidak Boleh Kosong";
+                      }
+
+                      if (errorApi != null) {
+                        return errorApi;
                       }
                     },
                   ),
@@ -95,6 +105,7 @@ class _SigninScreenState extends State<SigninScreen> {
                   ),
                   child: TextFormField(
                     controller: passwordController,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     obscureText: true,
                     decoration: InputDecoration(
                         border: InputBorder.none,
@@ -106,19 +117,6 @@ class _SigninScreenState extends State<SigninScreen> {
                     },
                   ),
                 ),
-                (errorApi != null)
-                    ? Container(
-                        margin: EdgeInsets.symmetric(horizontal: 20),
-                        width: double.infinity,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(errorApi!,
-                                style: poppinsFont.copyWith(color: errorColor)),
-                          ],
-                        ),
-                      )
-                    : Container(),
                 (!isLoading)
                     ? Container(
                         width: double.infinity,
@@ -179,9 +177,9 @@ class _SigninScreenState extends State<SigninScreen> {
   }
 
   _submitButton(username, password) async {
+    print(errorApi);
     final form = _formKey.currentState;
     if (form!.validate()) {
-      // print(errorApi);
       try {
         var response = await AuthService.login(username, password);
 
@@ -199,10 +197,11 @@ class _SigninScreenState extends State<SigninScreen> {
           setState(() {
             errorApi = response.message;
           });
-          // print();
+          print(errorApi);
         }
       } on DioError catch (e) {
         print(e);
+        print("tes");
       }
     }
 
