@@ -2,7 +2,13 @@ part of "doctor.dart";
 
 class DoctorConfirmDetailScreen extends StatefulWidget {
   final DoctorSchedule doctorSchedule;
-  DoctorConfirmDetailScreen({required this.doctorSchedule});
+  final bool confirm;
+  final Function? onBackPressed;
+
+  DoctorConfirmDetailScreen(
+      {required this.doctorSchedule,
+      required this.confirm,
+      this.onBackPressed});
 
   @override
   _DoctorConfirmDetailScreenState createState() =>
@@ -26,7 +32,11 @@ class _DoctorConfirmDetailScreenState extends State<DoctorConfirmDetailScreen> {
                 children: [
                   InkWell(
                     onTap: () {
-                      Get.to(() => DoctorConfirmScheduleScreen());
+                      if (widget.onBackPressed != null) {
+                        widget.onBackPressed!();
+                      } else {
+                        Get.to(() => DoctorConfirmScheduleScreen());
+                      }
                     },
                     child: Container(
                       padding: EdgeInsets.all(5),
@@ -126,14 +136,18 @@ class _DoctorConfirmDetailScreenState extends State<DoctorConfirmDetailScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: Container(
-        height: 40,
-        margin: EdgeInsets.symmetric(vertical: 15, horizontal: 16),
-        child: ElevatedButton(
-            onPressed: () {},
-            style: ElevatedButton.styleFrom(primary: primaryColor),
-            child: Text("Konfirmasi")),
-      ),
+      bottomNavigationBar: (widget.confirm)
+          ? Container(
+              height: 40,
+              margin: EdgeInsets.symmetric(vertical: 15, horizontal: 16),
+              child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(primary: primaryColor),
+                  child: Text("Konfirmasi")),
+            )
+          : Container(
+              height: 2,
+            ),
     );
   }
 

@@ -66,7 +66,12 @@ class _DoctorScheduleScreenState extends State<DoctorScheduleScreen> {
                                 splashColor: primaryColor,
                                 onTap: () {
                                   Get.to(() => DoctorConfirmDetailScreen(
-                                      doctorSchedule: e));
+                                        doctorSchedule: e,
+                                        confirm: false,
+                                        onBackPressed: () {
+                                          Get.to(() => DoctorScheduleScreen());
+                                        },
+                                      ));
                                 },
                                 child: ListTile(
                                     contentPadding: EdgeInsets.symmetric(
@@ -122,7 +127,11 @@ class _DoctorScheduleScreenState extends State<DoctorScheduleScreen> {
                                 splashColor: primaryColor,
                                 onTap: () {
                                   Get.to(() => DoctorConfirmDetailScreen(
-                                      doctorSchedule: e));
+                                      doctorSchedule: e,
+                                      confirm: false,
+                                      onBackPressed: () {
+                                        Get.to(() => DoctorScheduleScreen());
+                                      }));
                                 },
                                 child: ListTile(
                                     contentPadding: EdgeInsets.symmetric(

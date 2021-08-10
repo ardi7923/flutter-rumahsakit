@@ -53,7 +53,7 @@ class _DoctorConfirmScheduleScreenState
                             splashColor: primaryColor,
                             onTap: () {
                               Get.to(() =>
-                                  DoctorConfirmDetailScreen(doctorSchedule: e));
+                                  DoctorConfirmDetailScreen(doctorSchedule: e,confirm: true,));
                             },
                             child: ListTile(
                                 contentPadding: EdgeInsets.symmetric(
