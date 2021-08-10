@@ -1,6 +1,9 @@
 part of "doctor.dart";
 
 class DoctorConfirmDetailScreen extends StatefulWidget {
+  final DoctorSchedule doctorSchedule;
+  DoctorConfirmDetailScreen({required this.doctorSchedule});
+
   @override
   _DoctorConfirmDetailScreenState createState() =>
       _DoctorConfirmDetailScreenState();
@@ -49,7 +52,7 @@ class _DoctorConfirmDetailScreenState extends State<DoctorConfirmDetailScreen> {
                   SizedBox(height: 10),
                   Center(
                     child: Text(
-                      "nama",
+                      widget.doctorSchedule.name,
                       style: poppinsFont.copyWith(
                           fontWeight: FontWeight.bold, fontSize: 20),
                     ),
@@ -77,8 +80,11 @@ class _DoctorConfirmDetailScreenState extends State<DoctorConfirmDetailScreen> {
                           EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                       child: Column(
                         children: [
-                          datapatient("Tanggal", "28 Nov 2021"),
-                          datapatient("Waktu", "17:00 - 18:00"),
+                          datapatient(
+                              "Tanggal",
+                              DateFormat("dd-MM-yyyy")
+                                  .format(widget.doctorSchedule.date)),
+                          datapatient("Waktu", widget.doctorSchedule.time),
                         ],
                       ),
                     ),
@@ -96,12 +102,20 @@ class _DoctorConfirmDetailScreenState extends State<DoctorConfirmDetailScreen> {
                           EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                       child: Column(
                         children: [
-                          datapatient("nama", "nama"),
-                          datapatient("No KTP", "123123123123"),
-                          datapatient("Jenis Kelamin", "Perempuan"),
-                          datapatient("Tanggal Lahir", "28 Nov 2021"),
-                          datapatient("Alamat", "tes"),
-                          datapatient("No Telp", "tes"),
+                          datapatient("nama", widget.doctorSchedule.name),
+                          datapatient(
+                              "No KTP", widget.doctorSchedule.ktpNumber),
+                          datapatient(
+                              "Jenis Kelamin",
+                              (widget.doctorSchedule.gender == Gender.laki)
+                                  ? "Laki-laki"
+                                  : "Perempuan"),
+                          datapatient(
+                              "Tanggal Lahir",
+                              DateFormat("dd-MM-yyyy")
+                                  .format(widget.doctorSchedule.birthday)),
+                          datapatient("Alamat", widget.doctorSchedule.address),
+                          datapatient("No Telp", widget.doctorSchedule.phone),
                         ],
                       ),
                     ),

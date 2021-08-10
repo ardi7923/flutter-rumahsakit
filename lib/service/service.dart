@@ -9,3 +9,4 @@ part "doctor_service.dart";
 part "schedule_service.dart";
 part "submission_schedule_service.dart";
 part "patient_schedule_service.dart";
+part "doctor_schedule_service.dart";

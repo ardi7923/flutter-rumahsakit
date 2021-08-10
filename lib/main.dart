@@ -4,6 +4,7 @@ import 'package:flutter_rumahsakit/cubit/doctor_cubit.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
+import 'cubit/doctor_schedule_cubit.dart';
 import 'cubit/patient_cubit.dart';
 import 'cubit/patient_schedule_cubit.dart';
 import 'cubit/schedule_cubit.dart';
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => DoctorCubit()),
         BlocProvider(create: (_) => ScheduleCubit()),
         BlocProvider(create: (_) => PatientScheduleCubit()),
+        BlocProvider(create: (_) => DoctorScheduleCubit()),
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
