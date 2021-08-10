@@ -16,6 +16,8 @@ class DoctorConfirmDetailScreen extends StatefulWidget {
 }
 
 class _DoctorConfirmDetailScreenState extends State<DoctorConfirmDetailScreen> {
+  bool isLoading = false;
+
   @override
   Widget build(BuildContext context) {
     return PublicLayout(
@@ -140,10 +142,27 @@ class _DoctorConfirmDetailScreenState extends State<DoctorConfirmDetailScreen> {
           ? Container(
               height: 40,
               margin: EdgeInsets.symmetric(vertical: 15, horizontal: 16),
-              child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(primary: primaryColor),
-                  child: Text("Konfirmasi")),
+              child: (!isLoading)
+                  ? ElevatedButton(
+                      onPressed: () async {
+                        setState(() {
+                          isLoading = true;
+                        });
+
+                        var response = await DoctorConfirmService.approve(
+                            widget.doctorSchedule.id);
+
+                        if (response.value != null) {
+                          Get.offAll(() => DoctorConfirmScheduleScreen());
+                        } else {
+                          setState(() {
+                            isLoading = false;
+                          });
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(primary: primaryColor),
+                      child: Text("Konfirmasi"))
+                  : loadingFadingCircle,
             )
           : Container(
               height: 2,
