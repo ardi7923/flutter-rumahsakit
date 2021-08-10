@@ -27,12 +27,19 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^7.1.0
+  flutter_launcher_icons: ^0.9.1
   flutter_spinkit: ^5.0.0
   get: ^4.1.4
   get_storage: ^2.0.3
   google_fonts: ^2.1.0
   intl: ^0.17.0
   supercharged: ^2.0.0
+
+flutter_icons : 
+  image_path : "assets/icons/hospital.png"
+  android : true
+  ios : true
+
 
 dev_dependencies:
   flutter_test:
