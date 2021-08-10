@@ -9,6 +9,7 @@ class ConsultSuccessScreen extends StatelessWidget {
       imagePath: "assets/icons/contract.png",
       titleButtonPrimary: "Lihat Jadwal",
       onPressedPrimaryButton: (){
+        context.read<PatientScheduleCubit>().getPatientSchedule();
         Get.offAll(() => ListScheduleScreen());
       },
       secondaryButton: true,

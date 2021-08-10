@@ -1,6 +1,7 @@
 part of "model.dart";
 
-enum ScheduleStatus { available, unavailable }
+enum ScheduleStatus { available, unavailable,confirm }
+enum ScheduleExpire { expired, unexpired }
 
 class Schedule extends Equatable {
   final int id;

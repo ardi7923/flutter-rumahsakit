@@ -7,6 +7,11 @@ class ListScheduleScreen extends StatefulWidget {
 
 class _ListScheduleScreenState extends State<ListScheduleScreen> {
   @override
+  void initState() {
+    super.initState();
+    context.read<PatientScheduleCubit>().getPatientSchedule();
+  }
+
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
@@ -18,7 +23,8 @@ class _ListScheduleScreenState extends State<ListScheduleScreen> {
             backgroundColor: primaryColor,
             title: Text(
               "List Jadwal",
-              style: poppinsFont.copyWith(color: Colors.black,fontWeight: FontWeight.bold),
+              style: poppinsFont.copyWith(
+                  color: Colors.black, fontWeight: FontWeight.bold),
             ),
             leading: InkWell(
               onTap: () {
@@ -31,7 +37,7 @@ class _ListScheduleScreenState extends State<ListScheduleScreen> {
             ),
             bottom: TabBar(
                 indicator: UnderlineTabIndicator(
-                    borderSide: BorderSide(color: Colors.white,width: 2)),
+                    borderSide: BorderSide(color: Colors.white, width: 2)),
                 tabs: [
                   Tab(
                     text: "List",
@@ -43,103 +49,145 @@ class _ListScheduleScreenState extends State<ListScheduleScreen> {
         child: Container(
           margin: EdgeInsets.symmetric(vertical: 5, horizontal: 16),
           child: TabBarView(children: [
-            ListView(
-              children: [
-                Card(
-                    elevation: 8,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15)),
-                    child: InkWell(
-                      borderRadius: BorderRadius.circular(15),
-                      splashColor: primaryColor,
-                      onTap: () {},
-                      child: ListTile(
-                        contentPadding:
-                            EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                        leading: Image.asset(
-                          "assets/icons/list_schedule.png",
-                          width: 40,
-                        ),
-                        title: Text(
-                          "Dr. Sumarjo",
-                          style:
-                              poppinsFont.copyWith(fontWeight: FontWeight.bold),
-                        ),
-                        subtitle: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "28 Nov 2021",
-                              style: poppinsFont.copyWith(fontSize: 10),
-                            ),
-                            Text(
-                              "17.00 - 18.00",
-                              style: poppinsFont.copyWith(fontSize: 10),
-                            ),
-                            Text(
-                              "Spesialis THT",
-                              style: poppinsFont.copyWith(fontSize: 10),
-                            ),
-                          ],
-                        ),
-                        trailing: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Menunggu",
-                              style: poppinsFont.copyWith(
-                                  fontSize: 8,
-                                  color: Colors.red,
-                                  fontWeight: FontWeight.bold),
-                            )
-                          ],
-                        ),
-                      ),
-                    )),
-              ],
+            BlocBuilder<PatientScheduleCubit, PatientScheduleState>(
+              builder: (context, state) {
+                if (state is PatientScheduleLoaded) {
+                  return ListView(
+                    children: state.patientSchedules
+                        .where((element) =>
+                            element.expire == ScheduleExpire.unexpired)
+                        .map((e) => Card(
+                            elevation: 8,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15)),
+                            child: InkWell(
+                              borderRadius: BorderRadius.circular(15),
+                              splashColor: primaryColor,
+                              onTap: () {},
+                              child: ListTile(
+                                contentPadding: EdgeInsets.symmetric(
+                                    vertical: 5, horizontal: 10),
+                                leading: Container(
+                                  width: 60,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.grey,
+                                      image: DecorationImage(
+                                          image: NetworkImage(e.image),
+                                          fit: BoxFit.fitHeight)),
+                                ),
+                                title: Text(
+                                  e.name,
+                                  style: poppinsFont.copyWith(
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                subtitle: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      DateFormat("dd-MM-yyyy").format(e.date),
+                                      style: poppinsFont.copyWith(fontSize: 10),
+                                    ),
+                                    Text(
+                                      e.time,
+                                      style: poppinsFont.copyWith(fontSize: 10),
+                                    ),
+                                    Text(
+                                      e.specialist,
+                                      style: poppinsFont.copyWith(fontSize: 10),
+                                    ),
+                                  ],
+                                ),
+                                trailing: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    (e.status == ScheduleStatus.unavailable)
+                                        ? Text(
+                                            "Belum  dikonfirmasi",
+                                            style: poppinsFont.copyWith(
+                                                fontSize: 8,
+                                                color: Colors.red,
+                                                fontWeight: FontWeight.bold),
+                                          )
+                                        : Text(
+                                            "Telah dikonfirmasi",
+                                            style: poppinsFont.copyWith(
+                                                fontSize: 8,
+                                                color: Colors.green,
+                                                fontWeight: FontWeight.bold),
+                                          )
+                                  ],
+                                ),
+                              ),
+                            )))
+                        .toList(),
+                  );
+                } else {
+                  return loadingFadingCircle;
+                }
+              },
             ),
-            ListView(
-              children: [
-                Card(
-                    elevation: 8,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15)),
-                    child: InkWell(
-                      borderRadius: BorderRadius.circular(15),
-                      splashColor: primaryColor,
-                      onTap: () {},
-                      child: ListTile(
-                        contentPadding:
-                            EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                        leading: Image.asset(
-                          "assets/icons/list_schedule.png",
-                          width: 40,
-                        ),
-                        title: Text(
-                          "Dr. Sumarto",
-                          style:
-                              poppinsFont.copyWith(fontWeight: FontWeight.bold),
-                        ),
-                        subtitle: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "tes",
-                              style: poppinsFont.copyWith(fontSize: 10),
-                            ),
-                          ],
-                        ),
-                        trailing: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Icon(Icons.arrow_forward_ios_outlined),
-                          ],
-                        ),
-                      ),
-                    )),
-              ],
+            BlocBuilder<PatientScheduleCubit, PatientScheduleState>(
+              builder: (context, state) {
+                if (state is PatientScheduleLoaded) {
+                  return ListView(
+                      children: state.patientSchedules
+                          .where((element) =>
+                              element.expire == ScheduleExpire.expired)
+                          .map((e) => Card(
+                              elevation: 8,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15)),
+                              child: InkWell(
+                                borderRadius: BorderRadius.circular(15),
+                                splashColor: primaryColor,
+                                onTap: () {},
+                                child: ListTile(
+                                  contentPadding: EdgeInsets.symmetric(
+                                      vertical: 5, horizontal: 10),
+                                  leading: Container(
+                                    width: 60,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: Colors.grey,
+                                        image: DecorationImage(
+                                            image: NetworkImage(e.image),
+                                            fit: BoxFit.fitHeight)),
+                                  ),
+                                  title: Text(
+                                    e.name,
+                                    style: poppinsFont.copyWith(
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  subtitle: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        DateFormat("dd-MM-yyyy").format(e.date),
+                                        style:
+                                            poppinsFont.copyWith(fontSize: 10),
+                                      ),
+                                      Text(
+                                        e.time,
+                                        style:
+                                            poppinsFont.copyWith(fontSize: 10),
+                                      ),
+                                      Text(
+                                        e.specialist,
+                                        style:
+                                            poppinsFont.copyWith(fontSize: 10),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              )))
+                          .toList());
+                } else {
+                  return loadingFadingCircle;
+                }
+              },
             )
           ]),
         ),
