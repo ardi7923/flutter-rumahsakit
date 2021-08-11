@@ -137,7 +137,7 @@ class _PatientScreenState extends State<PatientScreen> {
                                         Get.to(
                                           () => PatientDetailScreen(
                                             patient: e,
-                                          ),
+                                          ),transition: transitionZoom,
                                         );
                                       },
                                       child: ListTile(

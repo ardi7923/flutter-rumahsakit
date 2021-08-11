@@ -8,8 +8,6 @@ class PublicLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DateTime? lastpressed;
-
     return Scaffold(
       appBar: appBar,
       backgroundColor: backgroundColor,

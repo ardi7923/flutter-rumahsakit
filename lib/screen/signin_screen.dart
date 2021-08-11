@@ -189,9 +189,9 @@ class _SigninScreenState extends State<SigninScreen> {
           authData.write('role', response.value['role']);
 
           if (response.value['role'] == "patient") {
-            Get.offAll(() => ConsultHomeScreen());
+            Get.offAll(() => ConsultHomeScreen(),transition: transitionZoom);
           } else if (response.value['role'] == "doctor") {
-            Get.offAll(() => DoctorHomeScreen());
+            Get.offAll(() => DoctorHomeScreen(),transition: transitionZoom);
           }
         } else {
           setState(() {

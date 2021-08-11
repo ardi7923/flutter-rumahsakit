@@ -86,7 +86,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               image: "assets/icons/patient.png",
                               title: "Cari Pasien",
                               onTap: () {
-                                Get.to(() => PatientScreen());
+                                Get.to(() => PatientScreen(),
+                                    transition: transitionZoom);
                               },
                             ),
                             CardMenu(
@@ -94,13 +95,15 @@ class _HomeScreenState extends State<HomeScreen> {
                               title: "Konsultasi",
                               onTap: () {
                                 if (authData.read("role") == "patient") {
-                                  Get.to(() => ConsultHomeScreen());
-                                } else if(authData.read("role") == "doctor"){
-
+                                  Get.to(() => ConsultHomeScreen(),
+                                      transition: transitionZoom);
+                                } else if (authData.read("role") == "doctor") {
                                 } else {
-                                  Get.to(() => SigninScreen(
-                                        register: true,
-                                      ));
+                                  Get.to(
+                                      () => SigninScreen(
+                                            register: true,
+                                          ),
+                                      transition: transitionZoom);
                                 }
                               },
                             ),
@@ -117,12 +120,15 @@ class _HomeScreenState extends State<HomeScreen> {
                               title: "Login Dokter",
                               onTap: () {
                                 if (authData.read("role") == "patient") {
-                                }else if(authData.read("role") == "doctor"){
-                                  Get.to(() => DoctorHomeScreen());
+                                } else if (authData.read("role") == "doctor") {
+                                  Get.to(() => DoctorHomeScreen(),
+                                      transition: transitionZoom);
                                 } else {
-                                  Get.to(() => SigninScreen(
-                                        register: false,
-                                      ));
+                                  Get.to(
+                                      () => SigninScreen(
+                                            register: false,
+                                          ),
+                                      transition: transitionZoom);
                                 }
                               },
                             ),
@@ -130,7 +136,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               image: "assets/icons/hospital.png",
                               title: "Tentang Kami",
                               onTap: () {
-                                Get.to(() => AboutusScreen());
+                                Get.to(() => AboutusScreen(),
+                                    transition: transitionZoom);
                               },
                             ),
                           ],

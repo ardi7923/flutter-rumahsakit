@@ -127,14 +127,14 @@ class _ConsultHomeScreenState extends State<ConsultHomeScreen> {
                               image: "assets/icons/list_schedule.png",
                               title: "Lihat Jadwal",
                               onTap: () {
-                                Get.to(() => ListScheduleScreen());
+                                Get.to(() => ListScheduleScreen(),transition: transitionLeftToRight);
                               },
                             ),
                             CardMenu(
                               image: "assets/icons/add_schedule.png",
                               title: "Atur Jadwal",
                               onTap: () {
-                                Get.to(() => ConsultDoctorScreen());
+                                Get.to(() => ConsultDoctorScreen(),transition: transitionLeftToRight);
                               },
                             ),
                           ],

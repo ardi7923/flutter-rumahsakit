@@ -290,9 +290,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             final form = _formKey.currentState;
 
                             if (form!.validate()) {
-                              // setState(() {
-                              //   isLoading = true;
-                              // });
                               var response = await RegisterService.registrasion(
                                   ktpNumberController.text,
                                   nameController.text,
@@ -310,7 +307,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     'token', response.value["token"]);
                                 authData.write('role', response.value['role']);
 
-                                Get.offAll(() => ConsultHomeScreen());
+                                Get.offAll(() => ConsultHomeScreen(),transition: transitionZoom);
                               } else {
                                 setState(() {
                                   isLoading = false;

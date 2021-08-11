@@ -18,3 +18,7 @@ Widget loadingFadingCircle = SpinKitFadingCircle(
 
 
 final authData = GetStorage();
+
+
+final transitionZoom = Transition.zoom;
+final transitionLeftToRight = Transition.leftToRightWithFade;
