@@ -129,6 +129,7 @@ class _ConsultScheduleScreenState extends State<ConsultScheduleScreen> {
                                 mainAxisSpacing: 10,
                                 crossAxisSpacing: 5,
                                 children: state.schedules.map((e) {
+                                  print(e);
                                   return (e.status == ScheduleStatus.available)
                                       ? (scheduleId == e.id)
                                           ? Container(

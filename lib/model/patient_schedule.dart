@@ -28,12 +28,12 @@ class PatientSchedule extends Equatable {
           name: json["doctor"]["name"],
           specialist: json["doctor"]["specialist"],
           image: json["doctor"]["image"],
-          status: (json["status"] == 0)
+          status: (int.parse(json["status"]) == 0 )
               ? ScheduleStatus.available
-              : (json["status"] == 1)
+              : (int.parse(json["status"]) == 1 )
                   ? ScheduleStatus.unavailable
                   : ScheduleStatus.confirm,
-          expire: (json["closed"] == 0)
+          expire: (json["closed"] == 0 || json["closed"] == "0")
               ? ScheduleExpire.unexpired
               : ScheduleExpire.expired);
   @override

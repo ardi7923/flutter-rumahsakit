@@ -37,12 +37,12 @@ class DoctorSchedule extends Equatable {
       birthday: DateTime.parse(json["patient"]["birthday"]),
       address: json["patient"]["address"],
       phone: json["patient"]["phone"],
-      status: (json["status"] == 0)
+      status: (int.parse(json["status"]) == 0)
           ? ScheduleStatus.available
-          : (json["status"] == 1)
+          : (int.parse(json["status"]) == 1)
               ? ScheduleStatus.unavailable
               : ScheduleStatus.confirm,
-      expire: (json["closed"] == 0)
+      expire: (int.parse(json["closed"]) == 0)
           ? ScheduleExpire.unexpired
           : ScheduleExpire.expired);
 

@@ -13,7 +13,7 @@ class Schedule extends Equatable {
   factory Schedule.fromJson(Map<String, dynamic> json) => Schedule(
         id: json["id"],
         time: json["time"],
-        status: (json["status"] == 0)
+        status: (int.parse(json["status"]) == 0)
             ? ScheduleStatus.available
             : ScheduleStatus.unavailable,
       );
