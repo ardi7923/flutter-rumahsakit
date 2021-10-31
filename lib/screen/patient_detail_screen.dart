@@ -91,6 +91,7 @@ class _PatientDetailScreenState extends State<PatientDetailScreen> {
                               (widget.patient.gender == Gender.laki)
                                   ? "Laki-laki"
                                   : "Perempuan"),
+                          datapatient("Tanggal Lahir", DateFormat("dd-MM-yyyy").format(widget.patient.birthday).toString()),
                           datapatient("Ruangan", widget.patient.room),
                           datapatient("Alamat", widget.patient.address),
                           datapatient("No Telp", widget.patient.phone),

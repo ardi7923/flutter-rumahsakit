@@ -47,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                   Image.asset(
-                    "assets/icons/consultation.png",
+                    "assets/logo_kepulauan_yapen.png",
                     width: MediaQuery.of(context).size.width / 4,
                   )
                 ],
@@ -92,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             CardMenu(
                               image: "assets/icons/health-check.png",
-                              title: "Konsultasi",
+                              title: "Pendaftaran \n Rawat Jalan",
                               onTap: () {
                                 if (authData.read("role") == "patient") {
                                   Get.to(() => ConsultHomeScreen(),
@@ -117,7 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
                             CardMenu(
                               image: "assets/icons/doctor.png",
-                              title: "Login Dokter",
+                              title: "Dokter",
                               onTap: () {
                                 if (authData.read("role") == "patient") {
                                 } else if (authData.read("role") == "doctor") {

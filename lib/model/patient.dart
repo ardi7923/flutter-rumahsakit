@@ -7,6 +7,7 @@ class Patient extends Equatable {
   final String name;
   final Gender gender;
   final String address;
+  final DateTime birthday;
   final String phone;
   final String room;
   final String status;
@@ -14,6 +15,7 @@ class Patient extends Equatable {
   Patient(
       {required this.id,
       required this.name,
+      required this.birthday,
       required this.gender,
       required this.address,
       required this.phone,
@@ -23,6 +25,7 @@ class Patient extends Equatable {
   factory Patient.fromJson(Map<String, dynamic> json) => Patient(
       id: json["id"],
       name: json["name"],
+      birthday: DateTime.parse(json["birthday"]),
       gender: ( json["gender"] == "M") ? Gender.laki : Gender.perempuan,
       address: json["address"],
       phone: json["phone"],
@@ -30,6 +33,6 @@ class Patient extends Equatable {
       status: json["status"]);
 
   @override
-  List<Object> get props => [id, name, gender, address, phone, room, status];
+  List<Object> get props => [id, name,birthday, gender, address, phone, room, status];
 }
 

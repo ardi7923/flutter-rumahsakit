@@ -164,10 +164,16 @@ class _PatientScreenState extends State<PatientScreen> {
                                                   fontSize: 10),
                                             ),
                                             Text(
+                                              DateFormat("dd-MM-yyyy").format(e.birthday),
+                                              style: poppinsFont.copyWith(
+                                                  fontSize: 10),
+                                            ),
+                                            Text(
                                               e.room,
                                               style: poppinsFont.copyWith(
                                                   fontSize: 10),
                                             ),
+                                            
                                           ],
                                         ),
                                         trailing: Column(

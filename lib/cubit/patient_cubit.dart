@@ -12,7 +12,7 @@ class PatientCubit extends Cubit<PatientState> {
       Get Data Cashier
   */
   Future<void> getPatient(search) async {
-    ApiReturnValue<List<Patient>> result = await PatientService.getData(search);
+    ApiReturnValue<List<Patient>> result =  await PatientService.getData(search);
 
     if (result.value != null) {
       emit(PatientLoaded(result.value!));
